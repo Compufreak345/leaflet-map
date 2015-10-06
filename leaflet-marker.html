@@ -714,6 +714,7 @@ Element which defines a maker  (<a href="http://leafletjs.com/reference.html#mar
 					});
 				}
 				if(this.additionalOptions) {
+					var opts = this.feature.options;
 					Object.keys(this.additionalOptions).forEach(function(key,index) {
 						opts[key] = newVal[key];
 					});
