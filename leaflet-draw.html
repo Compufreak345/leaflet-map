@@ -269,6 +269,28 @@ Do not use this element directly.
 				pointerEvents: this.pointerEvents,
 				className: this.className,
 			};
+		},
+		/**
+		 * Sets the style (options, http://leafletjs.com/reference.html#path) for the feature, if it was initialised before.
+		 * @param style a style-object, e.g. {color:'#03f',fillColor:'#FFCC00'}
+		 * @returns result of this.feature.setStyle or undefined if no feature initialized
+		 */
+		setStyle: function(style) {
+			if (!this.feature) {
+				return;
+			}
+			return this.feature.setStyle(style);
+		},
+		/**
+		 * If the item is already initialised (this.feature is set), it will update the style depending on the settings of this
+		 * e.g. useful to change colors without deleting & re-inserting the item.
+		 * @returns {*|result} result of this.feature.setStyle or undefined if no feature initialized
+		 */
+		updateStyle: function() {
+			if (!this.feature) {
+				return;
+			}
+			return this.feature.setStyle(this.getPathOptions());
 		}
 	};
 
