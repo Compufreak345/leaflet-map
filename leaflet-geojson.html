@@ -60,7 +60,8 @@ Polymer({
 			 */
 			color: {
 				type: String,
-				value: "#03f"
+				value: "#03f",
+			observer:"_updateStyle"
 			},
 
 			/**
@@ -71,7 +72,8 @@ Polymer({
 			 */
 			weight: {
 				type: Number,
-				value: 5
+				value: 5,
+				observer:"_updateStyle"
 			},
 
 			/**
@@ -82,7 +84,8 @@ Polymer({
 			 */
 			opacity: {
 				type: Number,
-				value: 0.5
+				value: 0.5,
+				observer:"_updateStyle"
 			},
 
 			/**
@@ -93,7 +96,8 @@ Polymer({
 			 */
 			fill: {
 				type: Boolean,
-				value: null
+				value: null,
+				observer:"_updateStyle"
 			},
 
 			/**
@@ -104,7 +108,8 @@ Polymer({
 			 */
 			fillColor: {
 				type: String,
-				value: null
+				value: null,
+				observer:"_updateStyle"
 			},
 
 			/**
@@ -115,7 +120,8 @@ Polymer({
 			 */
 			fillOpacity: {
 				type: Number,
-				value: 0.2
+				value: 0.2,
+				observer:"_updateStyle"
 			},
 
 			/**
@@ -126,7 +132,8 @@ Polymer({
 			 */
 			dashArray: {
 				type: String,
-				value: null
+				value: null,
+				observer:"_updateStyle"
 			},
 
 			/**
@@ -137,8 +144,9 @@ Polymer({
 			 */
 			lineCap: {
 				type: String,
-				value: null
-			}, 
+				value: null,
+				observer:"_updateStyle"
+			},
 
 			/**
 			 * The attribute `line-join` sets the string that defines shape to be used at the corners of the stroke.
@@ -148,17 +156,8 @@ Polymer({
 			 */
 			lineJoin: {
 				type: String,
-				value: null
-			},
-		/**
-		 * The attribute `options` sets the options that are passed additonally when the geoJson-Object is created.
-		 * (See http://leafletjs.com/reference.html#geojson)
-		 * @attribute options
-		 * @type Object
-		 */
-			options : {
-				type : Object,
-				value : null
+				value: null,
+				observer:"_updateStyle"
 			}
 
 	},
@@ -187,8 +186,8 @@ Polymer({
 	},
 	getGeoJsonOptions: function() {
 		return this._addAdditionalOptions({
-			color: this.color,
-					weight: this.weight,
+				color: this.color,
+				weight: this.weight,
 				opacity: this.opacity,
 				fill: this.fill,
 				fillColor: this.fillColor,
