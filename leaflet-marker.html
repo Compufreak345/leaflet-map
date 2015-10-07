@@ -393,7 +393,7 @@ Element which defines a maker  (<a href="http://leafletjs.com/reference.html#mar
 
 	Polymer({
 		is: 'leaflet-marker',
-		behaviors: [leafletMap.LeafletPopupContent],
+		behaviors: [leafletMap.LeafletPopupContent,leafletMap.LeafletOptionsContent],
 
 		/**
 		 * Fired when the user clicks (or taps) the marker.
@@ -674,7 +674,8 @@ Element which defines a maker  (<a href="http://leafletjs.com/reference.html#mar
 		_containerChanged: function() {
 			if (this.container) {
 
-				var options = {
+
+				var feature = L.marker([this.latitude, this.longitude], this._addAdditionalOptions({
 					clickable: !this.noClickable,
 					draggable: this.draggable,
 					keyboard: !this.noKeyboard,
@@ -683,15 +684,8 @@ Element which defines a maker  (<a href="http://leafletjs.com/reference.html#mar
 					zIndexOffset: this.zIndexOffset,
 					opacity: this.opacity,
 					riseOnHover: this.riseOnHover,
-					riseOffset: this.riseOffset,
-				};
-				if(this.additionalOptions) {
-					var opts = this.additionalOptions;
-					Object.keys(this.additionalOptions).forEach(function(key,index) {
-						options[key] = opts[key];
-					});
-				}
-				var feature = L.marker([this.latitude, this.longitude], options);
+					riseOffset: this.riseOffset
+				}));
 				this.feature = feature;
 				this._iconChanged();
 
