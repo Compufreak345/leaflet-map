@@ -626,8 +626,7 @@ add a marker with a popup text.
 
 		attached: function() {
 			// TODO09: Workaround for removed domReady event
-			var me = this;
-			setTimeout(function() {me.domReady()}, 1);
+			this.domReady();
 		},
 
 
